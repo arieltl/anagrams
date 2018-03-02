@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -673,7 +675,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="anagramas" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -688,7 +690,7 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-			<connections>
+                        <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
                     </window>
@@ -703,11 +705,103 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="anagramas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="482" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2G4-yH-hX7">
+                                <rect key="frame" x="193" y="160" width="96" height="32"/>
+                                <buttonCell key="cell" type="push" title="Generate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0v3-4H-qBk">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="generate:" target="XfG-lQ-9wD" id="pXO-IP-1F3"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0ek-G5-Pdv">
+                                <rect key="frame" x="193" y="227" width="96" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="TNE-Ab-cd4">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="09s-NL-8Md">
+                                <rect key="frame" x="193" y="196" width="117" height="23"/>
+                                <subviews>
+                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="f5r-nj-t6v">
+                                        <rect key="frame" x="0.0" y="1" width="96" height="22"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="LXV-Eb-uda">
+                                            <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="LdX-u2-xkl"/>
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oWX-4r-0iJ">
+                                        <rect key="frame" x="101" y="-2" width="19" height="27"/>
+                                        <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="TVr-cf-Of9"/>
+                                    </stepper>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0W-71-mVL">
+                                <rect key="frame" x="11" y="12" width="360" height="135"/>
+                                <clipView key="contentView" id="TGs-DH-NXq">
+                                    <rect key="frame" x="1" y="1" width="343" height="133"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="kyk-aL-ww5">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="133"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="minSize" width="343" height="133"/>
+                                            <size key="maxSize" width="463" height="10000000"/>
+                                            <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </textView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="LjP-rU-6ge">
+                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="TNE-iz-ABS">
+                                    <rect key="frame" x="344" y="1" width="15" height="133"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="09s-NL-8Md" secondAttribute="trailing" constant="172" id="2Ms-gt-fgL"/>
+                            <constraint firstItem="2G4-yH-hX7" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="199" id="7DR-Vq-FYx"/>
+                            <constraint firstItem="09s-NL-8Md" firstAttribute="top" secondItem="0ek-G5-Pdv" secondAttribute="bottom" constant="8" id="7U4-Ki-Vza"/>
+                            <constraint firstItem="j0W-71-mVL" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="11" id="8Oc-zU-6zi"/>
+                            <constraint firstItem="2G4-yH-hX7" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="82" id="A2D-gg-SMz"/>
+                            <constraint firstItem="2G4-yH-hX7" firstAttribute="top" secondItem="09s-NL-8Md" secondAttribute="bottom" constant="8" id="CDm-PP-fbe"/>
+                            <constraint firstItem="0ek-G5-Pdv" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="193" id="JZZ-aT-jdx"/>
+                            <constraint firstAttribute="trailing" secondItem="j0W-71-mVL" secondAttribute="trailing" constant="111" id="Pc0-UE-7tM"/>
+                            <constraint firstItem="09s-NL-8Md" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="193" id="WRF-uk-5hK"/>
+                            <constraint firstItem="j0W-71-mVL" firstAttribute="top" secondItem="2G4-yH-hX7" secondAttribute="bottom" constant="20" id="fAe-dl-dYz"/>
+                            <constraint firstAttribute="bottom" secondItem="j0W-71-mVL" secondAttribute="bottom" constant="12" id="gT2-SU-AxD"/>
+                            <constraint firstAttribute="trailing" secondItem="2G4-yH-hX7" secondAttribute="trailing" constant="199" id="lm2-TO-LPN"/>
+                            <constraint firstAttribute="trailing" secondItem="0ek-G5-Pdv" secondAttribute="trailing" constant="193" id="vVN-5X-EpP"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="nameTF" destination="0ek-G5-Pdv" id="pds-78-i9i"/>
+                        <outlet property="repetitionsTF" destination="f5r-nj-t6v" id="Kv2-Nd-9Ed"/>
+                        <outlet property="textView" destination="kyk-aL-ww5" id="MzA-Oo-EKF"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
